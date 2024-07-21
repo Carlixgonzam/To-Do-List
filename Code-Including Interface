@@ -1,0 +1,51 @@
+import tkinter as tk
+
+# Define an empty list to store the tasks
+tasks = []
+
+# Function to add a task to the list
+def add_task():
+    task = entry.get()
+    tasks.append(task)
+    entry.delete(0, tk.END)
+    print("Task added successfully!")
+
+# Function to remove a task from the list
+def remove_task():
+    task = entry.get()
+    if task in tasks:
+        tasks.remove(task)
+        entry.delete(0, tk.END)
+        print("Task removed successfully!")
+    else:
+        print("Task not found!")
+
+# Function to display all tasks in the list
+def display_tasks():
+    if tasks:
+        print("Tasks:")
+        for task in tasks:
+            print("- " + task)
+    else:
+        print("No tasks found!")
+
+# Create the main window
+window = tk.Tk()
+window.title("To-Do List")
+
+# Create the task entry field
+entry = tk.Entry(window)
+entry.pack()
+
+# Create the buttons
+add_button = tk.Button(window, text="Add Task", command=add_task)
+add_button.pack()
+
+remove_button = tk.Button(window, text="Remove Task", command=remove_task)
+remove_button.pack()
+
+display_button = tk.Button(window, text="Display Tasks", command=display_tasks)
+display_button.pack()
+
+# Start the main event loop
+window.mainloop()
